@@ -18,11 +18,19 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
+// Extent report imports
+import com.relevantcodes.extentreports.ExtentReports;
+import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
 
 public class testCase_01 {
 
     static RemoteWebDriver driver;
     static String LastGeneratedName__;
+
+    static ExtentTest test;
+    static ExtentReports report;
+
 
     @BeforeSuite(alwaysRun = true)
     public void createDriver() throws MalformedURLException {
@@ -30,6 +38,12 @@ public class testCase_01 {
         final DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setBrowserName(BrowserType.CHROME);
         driver = new RemoteWebDriver(new URL("http://localhost:8082/wd/hub"), capabilities);
+
+        // TODO - 1. CREATE an instance of ExtentReports
+        report = new ExtentReports(System.getProperty("user.dir") + "/ExtentReportResults.html");
+        // TODO - 2. Start a new test
+        test = report.startTest("ExtentDemo");
+
     }
 
 
@@ -67,6 +81,14 @@ public class testCase_01 {
         String lastGeneratedUserName = LastGeneratedName__;
         Login login = new Login(driver);
         login.navigateToLoginPage();
+
+        // TODO - Check for successful navigation to login page and log pass or fail status
+        if (driver.getCurrentUrl().contains("/login")) {
+            test.log(LogStatus.PASS, "Navigated to the specified URL"); // or fail
+        } else {
+            test.log(LogStatus.FAIL, "Test Failed");
+        }
+
         var status = login.PerformLogin(lastGeneratedUserName, "abc@123");
         assertTrue(status);
     }
@@ -74,6 +96,12 @@ public class testCase_01 {
     @AfterSuite
     public void quitDriver() {
         driver.quit();
+
+        // TODO - End the test
+        report.endTest(test);
+
+        // TODO - Write the test to filesystem
+        report.flush();
     }
 
 
