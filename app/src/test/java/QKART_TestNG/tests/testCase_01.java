@@ -40,9 +40,8 @@ public class testCase_01 {
         driver = new RemoteWebDriver(new URL("http://localhost:8082/wd/hub"), capabilities);
 
         // TODO - 1. CREATE an instance of ExtentReports
-        report = new ExtentReports(System.getProperty("user.dir") + "/ExtentReportResults.html");
+
         // TODO - 2. Start a new test
-        test = report.startTest("ExtentDemo");
 
     }
 
@@ -83,11 +82,7 @@ public class testCase_01 {
         login.navigateToLoginPage();
 
         // TODO - Check for successful navigation to login page and log pass or fail status
-        if (driver.getCurrentUrl().contains("/login")) {
-            test.log(LogStatus.PASS, "Navigated to the specified URL"); // or fail
-        } else {
-            test.log(LogStatus.FAIL, "Test Failed");
-        }
+      
 
         var status = login.PerformLogin(lastGeneratedUserName, "abc@123");
         assertTrue(status);
@@ -98,10 +93,8 @@ public class testCase_01 {
         driver.quit();
 
         // TODO - End the test
-        report.endTest(test);
 
         // TODO - Write the test to filesystem
-        report.flush();
     }
 
 
