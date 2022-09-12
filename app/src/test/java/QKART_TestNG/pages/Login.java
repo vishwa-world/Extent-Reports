@@ -13,7 +13,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 
 public class Login {
-    ChromeDriver driver;
+    WebDriver driver;
 
     //Page Factories to create locators : TODO: update comments
     @FindBy(id="username")
@@ -29,7 +29,7 @@ public class Login {
     WebElement username_label;
 
     String url = "https://crio-qkart-frontend-qa.vercel.app/login"; 
-    public Login(ChromeDriver driver)
+    public Login(WebDriver driver)
     {
         this.driver = driver;
         PageFactory.initElements(new AjaxElementLocatorFactory(driver, 20), this);

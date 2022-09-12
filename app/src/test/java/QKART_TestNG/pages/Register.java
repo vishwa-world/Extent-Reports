@@ -14,7 +14,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 
 public class Register {
-    ChromeDriver driver;
+    WebDriver driver;
     String url = "https://crio-qkart-frontend-qa.vercel.app/register"; 
     public String lastGeneratedUsername = "";
 
@@ -30,7 +30,7 @@ public class Register {
     @FindBy(className = "button")
     WebElement register_now_button;
 
-    public Register(ChromeDriver driver)
+    public Register(WebDriver driver)
     {
      this.driver = driver;   
     }
