@@ -33,7 +33,7 @@ dependencies {
 
 application {
     // Define the main class for the application.
-    mainClass = 'QKART_TestNG.App'
+    mainClass = 'extentReports.App'
 }
 
 tasks.named('test') {
