@@ -1,4 +1,4 @@
-package QKART_TestNG.pages;
+package extentReports.pages;
 
 import java.time.Duration;
 import java.util.NoSuchElementException;

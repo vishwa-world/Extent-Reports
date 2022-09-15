@@ -1,7 +1,7 @@
-package QKART_TestNG.tests;
+package extentReports.tests;
 
-import QKART_TestNG.pages.Login;
-import QKART_TestNG.pages.Register;
+import extentReports.pages.Login;
+import extentReports.pages.Register;
 import static org.testng.Assert.assertTrue;
 import java.io.File;
 import java.net.MalformedURLException;
